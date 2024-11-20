@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="shortcut icon" type="image/png" href="/icon.png" />
+
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+	<script src="https://cdn.tailwindcss.com"></script>
+	<title>Raj Bank of India</title>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-poppins">
+	<!-- TOP NAVIGATION -->
+	<nav class="flex justify-between items-center p-4 shadow-md bg-white">
+		<p id="welcome" class="text-lg font-medium">Log in to get started</p>
+		<img src="logo.png" alt="Logo" class="h-12" />
+		<form class="flex space-x-2">
+			<input id="login__input--user" type="text" placeholder="user" class="w-32 px-4 py-2 rounded-full border border-gray-300 focus:ring-2 focus:ring-indigo-500 text-sm" />
+			<input id="login__input--pin" type="password" placeholder="PIN" maxlength="4" class="w-24 px-4 py-2 rounded-full border border-gray-300 focus:ring-2 focus:ring-indigo-500 text-sm" />
+			<button id="login__btn" class="text-indigo-500 text-lg hover:text-indigo-600">&rarr;</button>
+		</form>
+	</nav>
+
+	<main id="app" class="max-w-6xl lg:mx-auto mt-8 space-y-8 sm:mx-2.5 hidden">
+
+		<!-- LOGOUT TIMER -->
+		<p class="logout-timer text-right mr-8 text-sm">
+			You will be logged out in <span id="timer" class="font-bold">05:00</span>
+		</p>
+
+		<!-- BALANCE -->
+		<div class="bg-white shadow-md rounded-lg p-6 flex justify-between items-center">
+			<div>
+				<p class="text-xl font-medium">Current balance</p>
+				<p class="text-sm text-gray-500">As of <span id="date" class="font-semibold">05/03/2037</span></p>
+			</div>
+			<p id="balance__value" class="text-4xl font-semibold">0000€</p>
+		</div>
+
+		<!-- MOVEMENTS -->
+		<div id="movements" class="bg-white shadow-md rounded-lg overflow-hidden">
+			<!-- Sample Data -->
+			<div class="p-4 flex justify-between items-center border-b border-gray-100">
+				<div class="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full">2 deposit</div>
+				<div class="text-sm text-gray-500">3 days ago</div>
+				<div class="text-lg font-medium">4 000€</div>
+			</div>
+			<div class="p-4 flex justify-between items-center border-b border-gray-100">
+				<div class="text-sm bg-red-100 text-red-700 px-3 py-1 rounded-full">1 withdrawal</div>
+				<div class="text-sm text-gray-500">24/01/2037</div>
+				<div class="text-lg font-medium">-378€</div>
+			</div>
+		</div>
+
+		<!-- SUMMARY -->
+		<div class="grid grid-cols-4 gap-4 items-center bg-white shadow-md rounded-lg p-6">
+			
+			<div class="text-center">
+				<p class="text-sm uppercase font-medium">In</p>
+				<p id="summary__value--in" class="text-lg text-green-600">0000€</p>
+			</div>
+			<div class="text-center">
+				<p class="text-sm uppercase font-medium">Out</p>
+				<p id="summary__value--out" class="text-lg text-red-600">0000€</p>
+			</div>
+			<div class="text-center">
+				<p class="text-sm uppercase font-medium">Interest</p>
+				<p id="summary__value--interest" class="text-lg text-green-600">0000€</p>
+			</div>
+
+			<button id="btn--sort" class="bg-indigo-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-indigo-600">Sort</button>
+		</div>
+
+		<!-- OPERATIONS -->
+		<div class="space-y-6">
+			<div class="bg-yellow-50 p-6 rounded-lg shadow-md">
+				<h2 class="text-xl font-semibold mb-4">Transfer money</h2>
+				<form class="grid grid-cols-3 gap-4">
+					<input id="form__input--to" type="text" class="col-span-2 p-3 border border-gray-300 rounded-lg" placeholder="Transfer to" />
+					<input id="form__input--amount" type="number" class="p-3 border border-gray-300 rounded-lg" placeholder="Amount" />
+					<button id="form__btn--transfer" class="col-span-3 bg-yellow-500 text-white py-2 rounded-lg hover:bg-yellow-600">Submit</button>
+				</form>
+			</div>
+
+			<div class="bg-green-50 p-6 rounded-lg shadow-md">
+				<h2 class="text-xl font-semibold mb-4">Request loan</h2>
+				<form class="grid grid-cols-3 gap-4">
+					<input id="form__input--loan-amount" type="number" class="col-span-2 p-3 border border-gray-300 rounded-lg" placeholder="Amount" />
+					<button id="form__btn--loan" class="col-span-1 bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">Submit</button>
+				</form>
+			</div>
+
+			<div class="bg-red-50 p-6 rounded-lg shadow-md">
+				<h2 class="text-xl font-semibold mb-4">Close account</h2>
+				<form class="grid grid-cols-3 gap-4">
+					<input id="form__input--user" type="text" class="col-span-1 p-3 border border-gray-300 rounded-lg" placeholder="Confirm user" />
+					<input id="form__input--pin" type="password" maxlength="6" class="col-span-1 p-3 border border-gray-300 rounded-lg" placeholder="Confirm PIN" />
+					<button id="form__btn--close" class="col-span-1 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600">Submit</button>
+				</form>
+			</div>
+		</div>
+
+	</main>
+
+	<footer class="text-center font-bold mt-8 mb-8 text-sm text-gray-500">
+		&copy; Bank of Raj | Regulated by RBI (Raj Bank of India)
+	</footer>
+	<script src="./script.js"></script>
+</body>
+
+</html>
